@@ -1,0 +1,251 @@
+<ConsolidatedMasterConfig DocumentType="ConsolidatedMaster" IDField="CM.CUHEAD">
+  <Model>
+    <CM>
+      <HZStateStack />
+      <CUHEAD />
+      <Division />
+      <Name />
+      <Customer />
+      <Region />
+      <Pricing />
+      <LicPricing />
+      <ProductTypes Collection="true">
+        <ProductType>
+          <CUHEAD />
+          <Division />
+          <Des />
+          <EnrollmentId />
+          <History />
+          <Version />
+          <ProdType />
+          <MthsLeft />
+          <Contract />
+          <HZLineId IsHZLineId="true" />
+          <HZOrder IsHZOrder="true" />
+          <HZStatus IsHZStatus="true" />
+          <HZSelected IsHZSelected="true" />
+        </ProductType>
+      </ProductTypes>
+      <RebateTypes Collection="true">
+        <RebateType>
+          <CUHEAD />
+          <Division />
+          <ProgId />
+          <Description />
+          <AgreementId />
+          <NumLines />
+          <EndDate />
+          <DaysLeft />
+          <HZLineId IsHZLineId="true" />
+          <HZOrder IsHZOrder="true" />
+          <HZStatus IsHZStatus="true" />
+          <HZSelected IsHZSelected="true" />
+        </RebateType>
+      </RebateTypes>
+      <PriceRuleTypes Collection="true">
+        <PriceRuleType>
+          <CUHEAD />
+          <Division />
+          <Item />
+          <ItemDesc />
+          <PrType />
+          <AmountMargin />
+          <StartDate />
+          <EndDate />
+          <CreatedBy />
+          <ModifiedBy />
+          <MFGSKU />
+          <Category />
+          <SubCategory />
+          <HZLineId IsHZLineId="true" />
+          <HZOrder IsHZOrder="true" />
+          <HZStatus IsHZStatus="true" />
+          <HZSelected IsHZSelected="true" />
+        </PriceRuleType>
+      </PriceRuleTypes>
+    </CM>
+  </Model>
+  <Toolbar>
+    <Button ID="Query" Caption="Search" Icon="MagnifyGlass" Gesture="F7" />
+    <Button ID="ExecuteQuery" Caption="Execute Search" Icon="ZoomIn" Gesture="F8" />
+    <Button ID="Previous" Caption="Previous Item" Icon="ArrowLeft" Gesture="Ctrl+Up" />
+    <Button ID="Next" Caption="Next Item" Icon="ArrowRight" Gesture="Ctrl+Down" />
+    <Button ID="Cancel" Caption="Cancel" Icon="Cancel" Gesture="F4" />
+    <Button ID="Close" Caption="Close" Icon="Delete" Gesture="F12" />
+  </Toolbar>
+  <View>
+    <Section Name="CustomerSection" Caption="CUSTOMER MASTER" FieldColumnCount="35" FieldRowCount="100" ColumnWidth="60" Type="Static" HeaderTextAlignment="Left" CellRightPadding="10" CellBottomPadding="1">
+      <UIFormElement Name="Division" Bindname="CM.Division" Caption="Division" RestrictInput="[0-9]" DataLength="4" ColumnSpan="1" IsReadOnly="true" Row="0" Column="0" />
+      <UIFormElement Name="CUHEAD" Bindname="CM.CUHEAD" Caption="Master #" ColumnSpan="7" IsReadOnly="true" Row="0" Column="2" RestrictInput="[0-9]" UIElementType="KeySearch">
+        <Search Name="CUHEAD" Key="CUHEAD" Display="NAME" DisplayBindname="CM.Name">
+          <DataService Name="CUHEAD_NAME_CMQ">
+            <Filter Name="DIVISION" Bindname="CM.Division" IsKeyFilter="true" QueryOnOpen="true" />
+            <Filter Name="CUHEAD" IsKeyFilter="true" />
+            <Filter Name="NAME" />
+            <Filter Name="STATUS" />
+          </DataService>
+          <SearchPanel>
+            <UIFormElement Name="NAME" Caption="CUHEAD Name" UIElementType="TextBox" IsVisible="true" Width="250" CharacterCasing="Upper" />
+            <UIFormElement Name="CUHEAD" Caption="CUHEAD" UIElementType="TextBox" IsVisible="true" Width="80" CharacterCasing="Upper" />
+            <UIFormElement Name="STATUS" Caption="Status" UIElementType="TextBox" IsVisible="true" Width="40" CharacterCasing="Upper" Value="A" />
+            <UIFormElement Name="DIVISION" Caption="Division" UIElementType="TextBox" IsVisible="true" Width="40" CharacterCasing="Upper" RestrictInput="[0-9]" />
+          </SearchPanel>
+        </Search>
+      </UIFormElement>
+      <!--UIFormElement Name="Name" Bindname="CM.Name" Caption="Name" ColumnSpan="5" CharacterCasing="Upper" IsReadOnly="true" Row="0" Column="4"/-->
+      <UIFormElement Name="Region" Bindname="CM.Region" Caption="Region" ColumnSpan="4" CharacterCasing="Upper" IsReadOnly="true" Row="0" Column="10" />
+      <UIFormElement Name="Pricing" Bindname="CM.Pricing" Caption="Price" ColumnSpan="1" CharacterCasing="Upper" IsReadOnly="true" Row="0" Column="15" />
+      <UIFormElement Name="LicPricing" Bindname="CM.LicPricing" Caption="Lic" ColumnSpan="1" CharacterCasing="Upper" IsReadOnly="true" Row="0" Column="17" />
+    </Section>
+    <Section Name="ProductTypeSection" Caption="Product Types">
+      <UIFormElement Name="ProductTypes" Bindname="CM.ProductTypes" UIElementType="Grid" Height="220">
+        <Columns>
+          <UIFormElement Name="PT.Des" Bindname="CM.ProductTypes().Des" Caption="Description" Width="520" UIElementType="TextBox" IsReadOnly="true" ColumnSpan="8" />
+          <UIFormElement Name="PT.EnrollmentId" Bindname="CM.ProductTypes().EnrollmentId" Caption="Enrollment Id" Width="120" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="PT.Contract" Bindname="CM.ProductTypes().Contract" Caption="Contract" ColumnSpan="2" IsReadOnly="true" />
+          <UIFormElement Name="PT.ProdType" Bindname="CM.ProductTypes().ProdType" Caption="Product Type" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="PT.History" Bindname="CM.ProductTypes().History" Caption="History" ColumnSpan="2" IsReadOnly="true" />
+          <UIFormElement Name="PT.Version" Bindname="CM.ProductTypes().Version" Caption="Version" ColumnSpan="2" TextAlignment="Right" IsReadOnly="true" />
+          <UIFormElement Name="PT.MthsLeft" Bindname="CM.ProductTypes().MthsLeft" Caption="Months Left" ColumnSpan="2" TextAlignment="Right" IsReadOnly="true" />
+        </Columns>
+      </UIFormElement>
+    </Section>
+    <Section Name="RebateTypeSection" Caption="Rebate Deals">
+      <UIFormElement Name="RebateTypes" Bindname="CM.RebateTypes" UIElementType="Grid" Height="220">
+        <Columns>
+          <UIFormElement Name="RT.Description" Bindname="CM.RebateTypes().Description" Caption="Description" Width="550" UIElementType="TextBox" IsReadOnly="true" ColumnSpan="8" />
+          <UIFormElement Name="RT.AgreementId" Bindname="CM.RebateTypes().AgreementId" Caption="Agreement Id" Width="120" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="RT.NumLines" Bindname="CM.RebateTypes().NumLines" Caption="Lines" ColumnSpan="2" TextAlignment="Right" IsReadOnly="true" />
+          <UIFormElement Name="RT.Version" Bindname="CM.RebateTypes().Version" Caption="Version" ColumnSpan="2" Width="120" TextAlignment="Right" IsReadOnly="true" />
+          <UIFormElement Name="RT.DaysLeft" Bindname="CM.RebateTypes().DaysLeft" Caption="Days Left" ColumnSpan="2" Width="95" TextAlignment="Right" IsReadOnly="true" />
+          <UIFormElement Name="RT.ProgId" Bindname="CM.RebateTypes().ProgId" Caption="Program Id" ColumnSpan="2" Width="120" TextAlignment="Right" IsReadOnly="true" />
+        </Columns>
+      </UIFormElement>
+    </Section>
+    <Section Name="PriceRuleTypeSection" Caption="Price Rule">
+      <UIFormElement Name="PriceRuleTypes" Bindname="CM.PriceRuleTypes" UIElementType="Grid" Height="200">
+        <Columns>
+          <UIFormElement Name="PRT.Item" Bindname="CM.PriceRuleTypes().Item" Caption="Item" UIElementType="TextBox" IsReadOnly="true" ColumnSpan="2" />
+          <UIFormElement Name="PRT.ItemDesc" Bindname="CM.PriceRuleTypes().ItemDesc" Caption="Item Desc" ColumnSpan="4" IsReadOnly="true" />
+          <UIFormElement Name="PRT.AmountMargin" Bindname="CM.PriceRuleTypes().AmountMargin" Caption="Amount/Margin" Width="120" TextAlignment="Right" ColumnSpan="2" IsReadOnly="true" />
+          <UIFormElement Name="PRT.StartDate" Bindname="CM.PriceRuleTypes().StartDate" Caption="Start Date" Width="110" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="PRT.EndDate" Bindname="CM.PriceRuleTypes().EndDate" Caption="End Date" Width="110" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="PRT.CreatedBy" Bindname="CM.PriceRuleTypes().CreatedBy" Caption="Created By" ColumnSpan="4" IsReadOnly="true" />
+          <UIFormElement Name="PRT.ModifiedBy" Bindname="CM.PriceRuleTypes().ModifiedBy" Caption="Modified By" ColumnSpan="4" IsReadOnly="true" />
+          <UIFormElement Name="PRT.MFGSKU" Bindname="CM.PriceRuleTypes().MFGSKU" Caption="MfgSKU" ColumnSpan="3" IsReadOnly="true" />
+          <UIFormElement Name="PRT.Category" Bindname="CM.PriceRuleTypes().Category" Caption="Category" ColumnSpan="2" IsReadOnly="true" />
+          <UIFormElement Name="PRT.SubCategory" Bindname="CM.PriceRuleTypes().SubCategory" Caption="Sub Category" ColumnSpan="2" IsReadOnly="true" />
+        </Columns>
+      </UIFormElement>
+    </Section>
+    <!-- -->
+    <!--============================== Dashboards ============================================-->
+    <!-- -->
+    <Dashboard>
+      <!--============================== Product Type Order History =====================================-->
+      <DashElement Name="Product Type Order History" Caption="Product Type Order History" UIElementType="DashGrid" Height="320">
+        <DataService Name="CM_PRODUCT_TYPE_HIS_DASH">
+          <Filter Name="CUHEAD" Bindname="CM.CUHEAD" />
+          <Filter Name="DIVISION" Bindname="CM.Division" />
+          <Filter Name="PRODTYPE" Bindname="CM.ProductTypes(Current).ProdType" />
+        </DataService>
+        <Fields>
+          <Field Name="PRODTYPE" Caption="Product Type" />
+          <Field Name="ITEM" Caption="Item" />
+          <Field Name="LASTPRICE" Caption="Last Price" TextAlignment="Right" />
+          <Field Name="QTYORD" Caption="Qty Ord" TextAlignment="Right" />
+          <Field Name="ITEMDESC" Caption="Item Description" />
+          <Field Name="ANNUITY" Caption="Annuity" TextAlignment="Right" />
+          <Field Name="BILLTYPE" Caption="Bill Type" />
+        </Fields>
+      </DashElement>
+      <!--============================== Rebate Details =====================================-->
+      <DashElement Name=" Rebate Details" Caption=" Rebate Details" UIElementType="DashGrid" Height="320">
+        <DataService Name="CM_REBATE_DETAILS_DASH">
+          <Filter Name="PROGID" Bindname="CM.RebateTypes().ProgId" />
+        </DataService>
+        <Fields>
+          <!--Field Name="PROG_ID" Caption="Program Id" /-->
+          <Field Name="ITEM" Caption="Item" />
+          <Field Name="MFGSKU" Caption="MfgSKU" />
+          <Field Name="DESCRIPTION" Caption="Description" />
+        </Fields>
+      </DashElement>
+    </Dashboard>
+    <!-- -->
+    <!--==============================END of Dashboards ============================================-->
+    <!-- -->
+  </View>
+  <StateAction>
+    <State Name="ViewNoRecord" ClientMode="View">
+      <Action ID="Query" Button="Query" Command="StoreCurrent_SendAction" />
+      <Action ID="Close" Button="Close" Command="CloseModule" />
+    </State>
+    <State Name="EditQuery" ClientMode="Query">
+      <Action ID="Query" Command="RestoreQuery" />
+      <Action ID="PreQuery" Command="" />
+      <Action ID="ExecuteQuery" Command="SendQueryAction" />
+      <Action ID="Cancel" Command="RestoreResult" />
+      <Action ID="Close" Command="CloseModule" />
+    </State>
+    <State Name="View" ClientMode="View">
+      <Action ID="Query" Button="Query" Command="StoreCurrent_SendAction" />
+      <Action ID="Previous" Button="Previous" Command="GoToPrevious" />
+      <Action ID="Next" Button="Next" Command="GoToNext" />
+      <Action ID="Cancel" Command="RestoreResult" />
+      <Action ID="Close" Command="CloseModule" />
+      <!-- Hyperlinks -->
+      <!-- End of Hyperlinks -->
+    </State>
+  </StateAction>
+  <StateField>
+    <State Name="EditQuery" FieldConstraintsEnabled="false" IsReadOnly="true">
+      <UIFormElement Name="CUHEAD" IsReadOnly="false" />
+      <UIFormElement Name="Division" IsReadOnly="false" />
+      <UIFormElement Name="Name" IsReadOnly="false" />
+      <UIFormElement Name="Region" IsReadOnly="false" />
+      <UIFormElement Name="Pricing" IsReadOnly="false" />
+      <UIFormElement Name="LicPricing" IsReadOnly="false" />
+    </State>
+  </StateField>
+  <ResponsibilityField>
+    <Responsibility ID="01" IsReadOnly="true">
+      <UIFormElement Name="CUHEAD" IsReadOnly="false" />
+      <UIFormElement Name="Division" IsReadOnly="false" />
+      <UIFormElement Name="Name" IsReadOnly="false" />
+      <UIFormElement Name="Region" IsReadOnly="false" />
+      <UIFormElement Name="Pricing" IsReadOnly="false" />
+      <UIFormElement Name="LicPricing" IsReadOnly="false" />
+    </Responsibility>
+    <Responsibility ID="10" IsReadOnly="true">
+      <UIFormElement Name="CUHEAD" IsReadOnly="false" />
+      <UIFormElement Name="Division" IsReadOnly="false" />
+      <UIFormElement Name="Name" IsReadOnly="false" />
+      <UIFormElement Name="Region" IsReadOnly="false" />
+      <UIFormElement Name="Pricing" IsReadOnly="false" />
+      <UIFormElement Name="LicPricing" IsReadOnly="false" />
+    </Responsibility>
+  </ResponsibilityField>
+  <ResponsibilityStateAction>
+    <Responsibility ID="01">
+      <State Name="ViewNoRecord">
+        <Action ID="Query" />
+        <Action ID="Close" />
+      </State>
+      <State Name="EditQuery">
+        <Action ID="Query" />
+        <Action ID="PreQuery" />
+        <Action ID="ExecuteQuery" />
+        <Action ID="Cancel" />
+        <Action ID="Close" />
+      </State>
+      <State Name="View">
+        <Action ID="Query" />
+        <Action ID="Previous" Button="Previous" Command="GoToPrevious" />
+        <Action ID="Next" Button="Next" Command="GoToNext" />
+        <Action ID="Cancel" />
+        <Action ID="Close" />
+      </State>
+    </Responsibility>
+  </ResponsibilityStateAction>
+</ConsolidatedMasterConfig>

@@ -1,0 +1,5 @@
+C:\Users\Owner-PC\Documents\AvalonEdit\bin\Debug\ICSharpCode.AvalonEdit.Tests.dll
+C:\Users\Owner-PC\Documents\AvalonEdit\bin\Debug\ICSharpCode.AvalonEdit.Tests.pdb
+C:\Users\Owner-PC\Documents\AvalonEdit\ICSharpCode.AvalonEdit.Tests\obj\Debug\ICSharpCode.AvalonEdit.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Owner-PC\Documents\AvalonEdit\ICSharpCode.AvalonEdit.Tests\obj\Debug\ICSharpCode.AvalonEdit.Tests.dll
+C:\Users\Owner-PC\Documents\AvalonEdit\ICSharpCode.AvalonEdit.Tests\obj\Debug\ICSharpCode.AvalonEdit.Tests.pdb
